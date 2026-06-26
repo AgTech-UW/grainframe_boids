@@ -11,24 +11,29 @@ from launch_ros.actions import Node
 
 
 def spawn_boids(context):
-    """Build the list of Node actions to spawn, one per boid."""
-    # Read the launch argument's current value.
-    # context.perform_substitution turns the symbolic LaunchConfiguration
-    # into an actual string we can convert to int.
+    """Build the list of Node actions to spawn, one per boid + the viewer."""
     n = int(LaunchConfiguration('num_boids').perform(context))
-
     nodes = []
+
     for i in range(n):
         nodes.append(Node(
             package='boids',
             executable='single_boid',
-            name=f'boid_{i}',                  # unique node name in ros2 node list
+            name=f'boid_{i}',
             parameters=[{
                 'boid_id': i,
                 'num_boids': n,
             }],
-            output='screen',                   # show this node's logs in the terminal
+            output='screen',
         ))
+
+    nodes.append(Node(
+        package='boids',
+        executable='flock_viewer',
+        name='flock_viewer',
+        output='screen',
+    ))
+
     return nodes
 
 

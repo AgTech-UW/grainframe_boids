@@ -1,0 +1,13 @@
+{
+  "name": "Boids ROS 2 Humble",
+  "image": "osrf/ros:humble-desktop-full",
+  "privileged": true,
+  "remoteUser": "root",
+  "containerEnv": { "QT_X11_NO_MITSHM": "1" },
+  "runArgs": [
+    "--net=host",
+    "--privileged",
+    "--shm-size=512m"
+  ],
+  "postCreateCommand": "sed -i 's/\\r$//' .devcontainer/bootstrap.sh && bash .devcontainer/bootstrap.sh"
+}

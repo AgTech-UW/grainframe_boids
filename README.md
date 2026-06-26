@@ -2,8 +2,8 @@
 
 Reynolds boids flocking in ROS 2 Humble, packaged two ways:
 
-- **Centralized** — one node owns all N boids in numpy arrays, publishes a single `PoseArray`. Ground-truth reference.
-- **Decentralized** — N independent nodes, each owning one boid, each publishing its own `Odometry` and subscribing to its neighbors over DDS. This is the architecture that maps onto a real fleet of robots.
+- **Centralized** one node owns all N boids in numpy arrays, publishes a single `PoseArray`. Ground-truth reference.
+- **Decentralized** N independent nodes, each owning one boid, each publishing its own `Odometry` and subscribing to its neighbors over DDS. This is the architecture that maps onto a real fleet of robots.
 
 Both versions share the same `boids_logic.py` flocking math module. The decentralized version also spawns a `flock_viewer` node that dynamically discovers `/boid_*/odom` topics and republishes a unified `PoseArray` for RViz — so visualization scales to any N without configuration.
 
@@ -25,7 +25,7 @@ source install/setup.bash
 ros2 launch boids boids.launch.py num_boids:=20
 ```
 
-Spawns 20 boid nodes + the viewer + RViz. In RViz set Fixed Frame to `world`, Add → By topic → `/boids/poses` → PoseArray.
+Spawns 20 boid nodes + the viewer + RViz. In RViz set Fixed Frame to `world`, Add -> By topic -> `/boids/poses` → PoseArray.
 
 While that's running, spawn an extra boid from another sourced terminal:
 

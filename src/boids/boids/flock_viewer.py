@@ -36,7 +36,7 @@ class FlockViewer(Node):
         all_topics = self.get_topic_names_and_types()
 
         for topic_name, types in all_topics:
-            if 'nav_msgs/msgs/Odometry' not in types:
+            if 'nav_msgs/msg/Odometry' not in types:
                 continue
 
             if not topic_name.startswith('/boid_') or not topic_name.endswith('/odom'):

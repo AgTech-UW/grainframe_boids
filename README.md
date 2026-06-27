@@ -25,7 +25,16 @@ source install/setup.bash
 ros2 launch boids boids.launch.py num_boids:=20
 ```
 
-Spawns 20 boid nodes + the viewer + RViz. In RViz set Fixed Frame to `world`, Add -> By topic -> `/boids/poses` -> PoseArray.
+Spawns 20 boid nodes. Open RViz in a second terminal.
+
+```bash
+# On Linux running RViz from inside a container: first run `xhost +local:root` on your host
+# (lets the container draw windows on your display), then `export DISPLAY=:1` inside the container
+# (tells GUI apps which display to use — :1 is the VNC screen, :0 is the physical monitor).
+rviz2
+```
+
+In RViz set Fixed Frame to `world`, Add -> By topic -> `/boids/poses` -> PoseArray.
 
 While that's running, spawn an extra boid from another sourced terminal:
 

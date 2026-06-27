@@ -27,8 +27,7 @@ ros2 launch boids boids.launch.py num_boids:=20
 
 Spawns 20 boid nodes. 
 
-On Linux running RViz from inside a container: first run `xhost +local:root` on your host, which lets the container draw windows on your display), then `export DISPLAY=:1` inside the container
-# (tells GUI apps which display to use... :1 is the desktop screen, and :0 is welcome screen for modern Linux GUIs.
+On Linux running RViz from inside a container: first run `xhost +local:root` on your host, which lets the container draw windows on your display). Then `export DISPLAY=:1` inside the container, which tells GUI which display to use... :1 is the desktop screen, and :0 is welcome screen for modern Linux GUIs.
 
 Open RViz in a second terminal.
 
